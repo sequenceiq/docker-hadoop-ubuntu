@@ -1,6 +1,6 @@
 #Apache Hadoop 2.5.1 Docker image
 
-A few weeks ago we released an Apache Hadoop 2.3 Docker image - this quickly become the most [popular](https://registry.hub.docker.com/search?q=hadoop&s=downloads) Hadoop image in the Docker [registry](https://registry.hub.docker.com/).
+A few weeks ago we released an Apache Hadoop 2.3 Docker image (using CentOS as the guest OS) - this quickly become the most [popular](https://registry.hub.docker.com/search?q=hadoop&s=downloads) Hadoop image in the Docker [registry](https://registry.hub.docker.com/).
 
 
 Following the success of our CentOS based Hadoop 2.3 Docker [image](https://registry.hub.docker.com/u/sequenceiq/hadoop-docker/), the feedback and feature requests we received aligned with the Hadoop release cycle, so we have released an Apache Hadoop 2.5.1 Docker image on Ubuntu as well - same as the previous version, it's available as a trusted and automated build on the official Docker [registry](https://registry.hub.docker.com/).
