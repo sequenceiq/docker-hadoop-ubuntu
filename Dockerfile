@@ -1,4 +1,4 @@
-# Creates pseudo distributed hadoop 2.5.1 on Ubuntu 14.04
+# Creates pseudo distributed hadoop 2.5.2 on Ubuntu 14.04
 #
 # docker build -t sequenceiq/hadoop-ubuntu:2.5.2 .
 
