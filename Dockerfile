@@ -1,6 +1,6 @@
-# Creates pseudo distributed hadoop 2.5.2 on Ubuntu 14.04
+# Creates pseudo distributed hadoop 2.6.0 on Ubuntu 14.04
 #
-# docker build -t sequenceiq/hadoop-ubuntu:2.5.2 .
+# docker build -t sequenceiq/hadoop-ubuntu:2.6.0 .
 
 FROM sequenceiq/pam:ubuntu-14.04
 MAINTAINER SequenceIQ
@@ -8,6 +8,7 @@ MAINTAINER SequenceIQ
 USER root
 
 # install dev tools
+RUN apt-get update
 RUN apt-get install -y curl tar sudo openssh-server openssh-client rsync
 
 # passwordless ssh
@@ -27,8 +28,8 @@ ENV JAVA_HOME /usr/java/default/
 ENV PATH $PATH:$JAVA_HOME/bin
 
 # hadoop
-RUN curl -s http://www.eu.apache.org/dist/hadoop/common/hadoop-2.5.2/hadoop-2.5.2.tar.gz | tar -xz -C /usr/local/
-RUN cd /usr/local && ln -s ./hadoop-2.5.2 hadoop
+RUN curl -s http://www.eu.apache.org/dist/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz | tar -xz -C /usr/local/
+RUN cd /usr/local && ln -s ./hadoop-2.6.0 hadoop
 
 ENV HADOOP_PREFIX /usr/local/hadoop
 RUN sed -i '/^export JAVA_HOME/ s:.*:export JAVA_HOME=/usr/java/default\nexport HADOOP_PREFIX=/usr/local/hadoop\nexport HADOOP_HOME=/usr/local/hadoop\n:' $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
@@ -50,7 +51,7 @@ RUN $HADOOP_PREFIX/bin/hdfs namenode -format
 
 # fixing the libhadoop.so like a boss
 RUN rm  /usr/local/hadoop/lib/native/*
-RUN curl -Ls http://dl.bintray.com/sequenceiq/sequenceiq-bin/hadoop-native-64-2.5.2.tar|tar -xz -C /usr/local/hadoop/lib/native/
+RUN curl -Ls http://dl.bintray.com/sequenceiq/sequenceiq-bin/hadoop-native-64-2.6.0.tar|tar -x -C /usr/local/hadoop/lib/native/
 
 ADD ssh_config /root/.ssh/config
 RUN chmod 600 /root/.ssh/config
